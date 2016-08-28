@@ -1,7 +1,7 @@
-Copyright (C) Sony Mobile Communications 2014
-=============================================
+# Common device tree for Sony devices
 
-This is the Android common configuration for Sony platforms.
+This tree stores common properties shared across most sony devices and has been slightly adjusted to work with cm-13.0
 
-Build instructions
-http://developer.sonymobile.com/knowledge-base/open-source/open-devices/aosp-build-instructions/
+Upstream merges do not have a fixed schedule but can be expected atleast once a week (if there are any changes)
+
+This repository is planned to be merged into android_device_kitakami to make commiting simpler and less fragmented as this organization is only focused on the  Sony Kitakami platform
