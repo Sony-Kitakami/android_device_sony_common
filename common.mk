@@ -115,6 +115,12 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
+# CM Apps
+# Gello
+PRODUCT_PACKAGES += \
+    Gello \
+    Snap
+
 # CAMERA
 PRODUCT_PACKAGES += \
     libmmcamera_interface \
