@@ -27,7 +27,9 @@
 #include <fcntl.h>
 #include <pthread.h>
 
+#ifdef LOW_PERSISTENCE_DISPLAY
 #include <linux/msm_mdp.h>
+#endif
 
 #include <sys/ioctl.h>
 #include <sys/types.h>
@@ -36,7 +38,9 @@
 
 /******************************************************************************/
 
+#ifdef LOW_PERSISTENCE_DISPLAY
 #define DEFAULT_LOW_PERSISTENCE_MODE_BRIGHTNESS 255
+#endif
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
@@ -70,8 +74,10 @@ char const*const GREEN_BLINK_FILE
 char const*const BLUE_BLINK_FILE
 		= "/sys/class/leds/led:rgb_blue/blink";
 
+#ifdef LOW_PERSISTENCE_DISPLAY
 char const*const DISPLAY_FB_DEV_PATH
 		= "/dev/graphics/fb0";
+#endif
 
 /**
  * device methods
@@ -150,8 +156,11 @@ set_light_backlight(struct light_device_t* dev,
 {
 	int err = 0;
 	int brightness = rgb_to_brightness(state);
-	unsigned int lpEnabled = state->brightnessMode == BRIGHTNESS_MODE_LOW_PERSISTENCE;
 
+#ifdef LOW_PERSISTENCE_DISPLAY
+	unsigned int lpEnabled = state->brightnessMode == BRIGHTNESS_MODE_LOW_PERSISTENCE;
+#endif
+	
 	if(!dev) {
 		return -1;
 	}
