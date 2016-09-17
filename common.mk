@@ -154,6 +154,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libemoji
 
+# ExtendedSettings
+PRODUCT_PACKAGES += \
+    ExtendedSettings
+
 # APN list
 PRODUCT_COPY_FILES += \
     device/sample/etc/old-apns-conf.xml:system/etc/old-apns-conf.xml \
@@ -167,6 +171,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Platform specific default properties
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.qmi.adb_logmask=0
+
+# configure adb over wifi only on the eng build
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
+PRODUCT_PROPERTY_OVERRIDES += \
+    service.adb.tcp.port=5555
+endif
 
 # Enable MultiWindow
 PRODUCT_PROPERTY_OVERRIDES += \

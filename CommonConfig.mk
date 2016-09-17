@@ -22,6 +22,7 @@ BOARD_KERNEL_CMDLINE += user_debug=31 androidboot.selinux=permissive
 BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x3F ehci-hcd.park=3
 BOARD_KERNEL_CMDLINE += dwc3.maximum_speed=high dwc3_msm.prop_chg_detect=Y
 BOARD_KERNEL_CMDLINE += coherent_pool=8M
+BOARD_KERNEL_CMDLINE += sched_enable_power_aware=1
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -66,7 +67,7 @@ ifeq ($(HOST_OS),linux)
 endif
 
 BUILD_KERNEL := true
-include device/sony/common-headers/KernelHeaders.mk
+-include device/sony/common-headers/KernelHeaders.mk
 -include device/sony/common-kernel/KernelConfig.mk
 
 # Include build helpers for QCOM proprietary

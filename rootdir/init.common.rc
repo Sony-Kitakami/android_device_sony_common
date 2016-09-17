@@ -176,7 +176,10 @@ on boot
     # Create symlink for fb1 as HDMI
     symlink /dev/graphics/fb1 /dev/graphics/hdmi
 
-    # Remove write permissions to video related nodes
+    # Graphics Permissions
+    chown system graphics /sys/class/graphics/fb0/idle_time
+    chmod 0664 /sys/class/graphics/fb0/idle_time
+
     chown system graphics /sys/class/graphics/fb1/avi_itc
     chown system graphics /sys/class/graphics/fb1/avi_cn0_1
     chown system graphics /sys/class/graphics/fb1/hpd
@@ -330,3 +333,15 @@ on property:ro.boot.baseband=msm
 
 on property:persist.radio.multisim.config=dsds
     enable ril-daemon2
+
+# adb over network
+on property:adb.network.port=*
+    setprop service.adb.tcp.port ${adb.network.port}
+
+on property:service.adb.tcp.port=5555
+    stop adbd
+    start adbd
+
+on property:service.adb.tcp.port=-1
+    stop adbd
+    start adbd
