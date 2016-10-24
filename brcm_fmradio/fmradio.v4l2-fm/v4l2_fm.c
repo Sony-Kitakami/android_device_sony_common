@@ -34,7 +34,7 @@
 #include <string.h>
 #include <pthread.h>
 #include <ctype.h>
-#include "../libfmjni/android_fm.h"
+#include "android_fm.h"
 #include "v4l2_ioctl.h"
 
 //RDS

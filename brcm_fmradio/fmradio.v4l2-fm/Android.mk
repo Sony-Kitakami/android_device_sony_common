@@ -2,6 +2,9 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
+LOCAL_C_INCLUDES := \
+	packages/apps/FMRadio/jni/fmr
+
 LOCAL_MODULE := libfmradio.v4l2-fm
 LOCAL_MODULE_SUFFIX := .so
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
